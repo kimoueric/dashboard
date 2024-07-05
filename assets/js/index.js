@@ -155,7 +155,7 @@ let manage = {
         sideBar.classList.remove("isNotAbsolute");
         sideBar.classList.add("isAbsolute");
         document.getElementById("burger").classList.remove("fi-rs-burger-menu");
-        document.body.classList.add("overflow-y-hidden");
+        document.body.classList.add("overflow-hidden");
         break;
       case "closeSideBar":
     
@@ -166,7 +166,7 @@ let manage = {
        
         
         document.getElementById("burger").classList.add("fi-rs-burger-menu");
-        document.body.classList.remove("overflow-y-hidden");
+        document.body.classList.remove("overflow-hidden");
         break;
       default:
         break;
