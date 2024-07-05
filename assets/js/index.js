@@ -73,6 +73,13 @@ let manage = {
         this.activeLiContent(li.getAttribute("id"))
     });
     });
+    document.getElementById("burger").addEventListener("click", (e) => {
+      this.burgerMenu(e.target);
+    });
+
+    document.getElementById("closeSideBar").addEventListener("click", (e) => {
+      this.burgerMenu(e.target);
+    });
   },
   upDown: function (btnUpDown) {
     let isDown = null;
@@ -123,8 +130,7 @@ let manage = {
   activeLiContent : function (liItem) {
     let contentActive = document.querySelector(".isContentVisible") 
     let isSameActiveElement = liItem.toString() === contentActive.getAttribute("data-li-content").toString()
-    console.log(isSameActiveElement);
-    console.log(liItem);
+   
     if(isSameActiveElement===false){
       contentActive.classList.add("isContentHidden");
       contentActive.classList.remove("isContentVisible");
@@ -135,6 +141,37 @@ let manage = {
 
       
     }
+  } ,
+  burgerMenu: function (elem) {
+    let btn = elem.getAttribute("id") ;
+    let sideBar = document.getElementById("sideBar");
+    switch (btn) {
+      case "burger":
+        sideBar.classList.remove("animate__animated");
+        sideBar.classList.remove("animate__bounceOutLeft");
+        sideBar.classList.remove("isHidden");
+        sideBar.classList.add("animate__animated");
+        sideBar.classList.add("animate__bounceInLeft");
+        sideBar.classList.remove("isNotAbsolute");
+        sideBar.classList.add("isAbsolute");
+        document.getElementById("burger").classList.remove("fi-rs-burger-menu");
+        document.body.classList.add("overflow-y-hidden");
+        break;
+      case "closeSideBar":
+    
+        sideBar.classList.add("isNotAbsolute");
+      
+          sideBar.classList.remove("isAbsolute");
+          sideBar.classList.add("isHidden");
+       
+        
+        document.getElementById("burger").classList.add("fi-rs-burger-menu");
+        document.body.classList.remove("overflow-y-hidden");
+        break;
+      default:
+        break;
+    }
+
   }
 };
 
