@@ -230,7 +230,7 @@
         <div class="main-content position-absolute h-full col-span-12">
           <!-- dashboard content  -->
           <div
-            class="grid grid-cols-12 gap-6 isContentVisible"
+            class="grid grid-cols-12 gap-6 isContentHidden"
             data-li-content="dashboard"
           >
             <!-- left part  -->
@@ -366,14 +366,14 @@
 
           <!-- employe content  -->
 
-          <div class="isContentHidden" data-li-content="employe">
+          <div class="isContentVisible" data-li-content="employe">
             <h5 class="text-xl font-medium mb-6">Gestions des employés</h5>
             <!-- header -->
             <div class="flex items-center justify-between">
               <a
-                class="bg-slate-900 p-4 rounded-[15px] text-slate-100 text-sm"
+                class="bg-slate-900 p-3 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm"
                 href=""
-                >Ajouter un employé</a
+                ><span class="isHidden md:inline">Ajouter un employé</span><span class="md:isHidden"><i class="fi fi-rs-plus-small"></i></span></a
               >
               <div class="border bg-white p-2 flex iems-center rounded-[15px]">
                 <input
@@ -385,10 +385,10 @@
               </div>
             </div>
             <!-- content  -->
-            <div class="grid grid-cols-4 gap-4 border my-9">
+            <div class="grid grid-cols-12 gap-4 border my-9">
               <!-- Affichage des employés  -->
               <figure
-                class="md:flex rounded-[15px] bg-gray-50 p-5 col-span-1 m-2 shadow-md"
+                class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-4 bg-gray-50 p-5 col-span-1 m-2 shadow-md"
               >
                 <img src="" alt="" class="size-32 mx-auto rounded-[10px]" />
                 <div class="flex items-center justify-between">
@@ -414,7 +414,7 @@
               </figure>
 
               <figure
-                class="md:flex rounded-[15px] bg-gray-50 p-5 col-span-1 m-2 shadow-md"
+                class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-4  bg-gray-50 p-5 col-span-1 m-2 shadow-md"
               >
                 <img src="" alt="" class="size-32 mx-auto rounded-[10px]" />
                 <div class="flex items-center justify-between">
@@ -440,7 +440,7 @@
               </figure>
 
               <figure
-                class="md:flex rounded-[15px] bg-gray-50 p-5 col-span-1 m-2 shadow-md"
+                class="flex rounded-[15px] bg-gray-50 p-5 col-span-12 md:col-span-6 xl:col-span-4  m-2 shadow-md"
               >
                 <img src="" alt="" class="size-32 mx-auto rounded-[10px]" />
                 <div class="flex items-center justify-between">
