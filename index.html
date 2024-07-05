@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.4.2/uicons-solid-rounded/css/uicons-solid-rounded.css"
+    />
+    <link
+    
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-straight/css/uicons-bold-straight.css'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+    <title>Document</title>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .menu > li {
+          /* width: 211px; */
+          padding: 15px;
+          margin-block: 15px;
+          cursor: pointer;
+        }
+        .activeItem {
+          border-radius: 25px 0px 0px 25px;
+          border-right: 0;
+          position: relative;
+          color: #0f172a;
+          background: #f1f5f9;
+          /* background: #2c649c; */
+
+        }
+
+
+        #operation-container-2 div:hover {
+          background-color: #334155;
+        }
+        .activeItem::after,
+        .activeItem::before {
+          content: "";
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          right: -0.7px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22259.51%22 height=%22259.52%22 viewBox=%220 0 259.51 259.52%22%3E%3Cpath id=%22Path_143%22 data-name=%22Path 143%22 d=%22M8659.507,423.965c-.167-2.608.05-5.319-.19-8.211-.084-1.012-.031-2.15-.118-3.12-.113-1.25-.1-2.682-.236-4.061-.172-1.722-.179-3.757-.365-5.394-.328-2.889-.478-5.857-.854-8.61-.509-3.714-.825-7.252-1.38-10.543-.934-5.535-2.009-11.312-3.189-16.692-.855-3.9-1.772-7.416-2.752-11.2-1.1-4.256-2.394-8.149-3.687-12.381-1.1-3.615-2.366-6.893-3.623-10.493-1.3-3.739-2.917-7.26-4.284-10.7-1.708-4.295-3.674-8.078-5.485-12.023-1.145-2.493-2.5-4.932-3.727-7.387-1.318-2.646-2.9-5.214-4.152-7.518-1.716-3.16-3.517-5.946-5.274-8.873-1.692-2.818-3.589-5.645-5.355-8.334-2.326-3.542-4.637-6.581-7.039-9.848-2.064-2.809-4.017-5.255-6.088-7.828-2.394-2.974-4.937-5.936-7.292-8.589-3.027-3.411-6.049-6.744-9.055-9.763-2.4-2.412-4.776-4.822-7.108-6.975-3-2.767-5.836-5.471-8.692-7.854-3.332-2.779-6.657-5.663-9.815-8.028-2.958-2.216-5.784-4.613-8.7-6.6-3.161-2.159-6.251-4.414-9.219-6.254-3.814-2.365-7.533-4.882-11.168-6.89-4.213-2.327-8.513-4.909-12.478-6.834-4.61-2.239-9.234-4.619-13.51-6.416-4.1-1.725-8.11-3.505-11.874-4.888-4.5-1.652-8.506-3.191-12.584-4.47-6.045-1.9-12.071-3.678-17.431-5-9.228-2.284-17.608-3.757-24.951-4.9-7.123-1.112-13.437-1.64-18.271-2.035l-2.405-.2c-1.638-.136-3.508-.237-4.633-.3a115.051,115.051,0,0,0-12.526-.227h259.51Z%22 transform=%22translate(-8399.997 -164.445)%22 fill=%22%23f1f5f8%22/%3E%3C/svg%3E");
+          background-size: 100% 100%;
+        }
+        .activeItem::before {
+          top: 1px;
+          margin-top: -30.9px;
+          transform: translateY(-100%);
+          transform: rotate(90deg);
+        }
+        .activeItem::after {
+          transform: translateY(100%);
+          bottom: 1px;
+        }
+
+        .isVisible {
+          display: block;
+        }
+        .isContentVisible {
+          display: grid;
+        }   
+        .isContentHidden {
+          display: none;
+        }
+        .isHidden {
+          display: none;
+        }
+     
+      }
+    </style>
+  </head>
+  <body class=" bg-slate-900 text-white">
+    <main class="flex md:max-w-auto min-h-screen min-w-0 max-w-full  p-6 " >
+      <!-- side bar  -->
+      <div class="position-relative flex  mt-12 hidden w-[80px] overflow-x-hidden pb-16 pr-5 md:block xl:w-[230px] ">
+        <div class="justify-center">
+          <ul class="menu">
+            <li class="flex items-center activeItem xl:w-[211px] w-[80px]" id="dashboard"  data-li="none">
+              <i class="fi fi-sr-home"></i>
+              <span class="mx-4 isHidden xl:block"> Dashboard</span>
+            </li>
+
+            <li class="flex items-center justify-between xl:w-[211px] w-[80px]" id="item2" >
+              <div>
+                <i class="fi fi-sr-business-time"></i>
+                <span class="mx-4 isHidden xl:inline"> Services</span>
+              </div>
+
+              <!-- bouton up down  -->
+              <button class="btnupdown" data-item="item2">
+                <i class="fi fi-sr-angle-small-down position-absolute xl:me-7"></i>
+              </button>
+            </li>
+            <!-- li operations  -->
+            <div
+              class="w-100% xl:w-[94%] bg-slate-800 rounded-[8px] isHidden"
+              data-li-operation="item2"
+            >
+              <div class="p-2 hover:bg-slate-700" id="employe">
+                <i class="fi fi-sr-users-alt mx-4"></i>
+                <button class="isHidden xl:inline">Employés</button>
+              </div>
+              <div class="p-2 hover:bg-slate-700"id="garantie">
+                <i class="fi fi-sr-badge-check mx-4"></i
+                ><button class="isHidden xl:inline">Garanties</button>
+              </div>
+              <div class="p-2 hover:bg-slate-700" id="reparation">
+                <i class="fi fi-sr-wrench-alt mx-4"></i>
+                <button class="isHidden xl:inline">Réparations</button>
+              </div>
+              <div class="p-2 hover:bg-slate-700" id="vente">
+                <i class="fi fi-sr-basket-shopping-simple mx-4"></i>
+                <button class="isHidden xl:inline">Ventes</button>
+              </div>
+            </div>
+            <li class="flex items-center justify-between  xl:w-[211px] w-[80px]" id="item3">
+              <div>
+                <i class="fi fi-sr-business-time"></i>
+                <span class="mx-4 isHidden xl:inline"> Gestions</span>
+              </div>
+
+              <!-- bouton up down  -->
+              <button class="btnupdown" data-item="item3">
+                <i class="fi fi-sr-angle-small-down position-absolute xl:me-7"></i>
+              </button>
+            </li>
+            <!-- li operations  -->
+            <div
+              class="w-[94%] bg-slate-800 rounded-[8px] isHidden"
+              data-li-operation="item3"
+            >
+              <div class="p-2 hover:bg-slate-700" id="categorie">
+                <i class="fi fi-br-category-alt mx-4"></i>
+                <button class="isHidden xl:inline">Catégories</button>
+              </div>
+              <div class="p-2 hover:bg-slate-700" id="produit">
+                <i class="fi fi-sr-boxes mx-4"></i>
+                <button class="isHidden xl:inline">Produits</button>
+              </div>
+
+              <div class="p-2 hover:bg-slate-700" id="stock">
+                <i class="fi fi-sr-box mx-4"></i> 
+                <button class="isHidden xl:inline">Stocks</button>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <!-- main content -->
+      <div
+        class="bg-slate-100 w-full  p-6  text-slate-900 rounded-[25px] shadow-lg "
+      >
+        <!-- header  -->
+        <div class="h-6 flex items-center justify-end md:justify-between mb-[26px] col-span-12  ">
+          <p class="flex items-center isHidden md:block">
+            <span>Application</span>
+            <i class="fi fi-sr-angle-small-right pt-[5px]"></i>
+            <span id="title" class="text-slate-500">dashboard</span>
+          </p>
+          <div
+            class="size-12 border flex items-center justify-center rounded-full border-slate-800 cursor-pointer"
+          >
+            <!-- <i class="fi fi-sr-circle-user w-" ></i> -->
+          </div>
+        </div>
+
+        <!--content  -->
+        <div class="main-content position-absolute  h-full  col-span-12 ">
+          <!-- dashboard content  -->
+          <div  class="grid grid-cols-12 gap-6 isContentVisible " data-li-content="dashboard">
+            <!-- left part  -->
+            <div class=" col-span-12 2xl:col-span-8 h-full border-r-2 border-slate-200  position-relative ">
+              <!-- general report  -->
+              <div class="">
+                <!-- header  -->
+                <div class="flex items-center justify-between w-full">
+                  <h5 class="font-medium text-slate-900 ">Rapport général</h5>
+                  <div class="flex items-center">
+                    <a href="">
+                      <div class="flex items-center text-slate-500">
+                        <i class="fi fi-sr-bolt pt-2 mx-4"></i>
+                        
+                        <span class="text-sm me-4 isHidden md:block">Faire une simulation</span>
+                      </div>
+                    </a>
+                    <a href="">
+                      <div class="flex items-center text-slate-500">
+                        <i class="fi fi-sr-refresh pt-2 mx-4"></i>
+                        
+                        <span class="text-sm me-4 isHidden md:block">Recharger les données</span>
+                      </div>
+                    </a>
+
+                  </div>
+                 
+                </div>
+                <!-- general report content  -->
+                <div class="pt-8 grid grid-cols-12 gap-6 ">
+                  <!-- card  -->
+                  <div
+                    class="flex rounded-[15px] p-3 flex flex-col  col-span-12 sm:col-span-6 xl:col-span-4 items-center shadow-lg mx-4 bg-gray-50 "
+                  >
+                    <div>
+                      <i class="fi fi-sr-shopping-cart text-4xl"></i>
+                    </div>
+                    <span class="font-medium text-4xl my-2">4.710</span>
+                    <p class="font-medium text-slate-500">Ventes d'articles</p>
+                  </div>
+                  <div
+                    class="flex rounded-[15px] p-3 flex flex-col col-span-12 sm:col-span-6 xl:col-span-4  items-center shadow-lg mx-4  cursor-pointer bg-gray-50"
+                  >
+                    <div>
+                      <!-- <i class="fi fi-br-box-open text-4xl my-5"></i> -->
+                      <i class="fi fi-br-screen text-4xl my-5"></i>
+                    </div>
+                    <span class="font-medium text-4xl my-2">4.710</span>
+                    <p class="font-medium text-slate-500">Total des produits</p>
+                  </div>
+                  <div
+                  class="flex rounded-[15px] p-3 flex flex-col col-span-12 sm:col-span-6 xl:col-span-4 items-center shadow-lg mx-4  cursor-pointer bg-gray-50"
+                >
+                  <div>
+                    
+                    <i class="fi fi-sr-box text-4xl my-5"></i>
+                  </div>
+                  <span class="font-medium text-4xl my-2">500</span>
+                  <p class="font-medium text-slate-500">Stocks</p>
+                </div>
+                </div>
+                <h5 class="font-medium text-slate-900 my-8">Rapport de ventes</h5>
+                <!-- chart container  -->
+                 <div class="flex grid grid-cols-12 gap-6 justify-between  border-slate-900 rounded-[25px] shadow-lg ">
+                 <div class="col-span-12 sm:col-span-12 md:col-span-6  bg-gray-50 p-4 rounded-[25px] shadow-lg mt-4">
+                  <div class="p-2 flex mb-6">
+                    <div class="me-6">
+                      <h5 class="font-medium text-slate-700">5000 FCFA</h5>
+                      <p class="font-medium text-slate-500 text-sm">Ce mois</p>
+                    </div>
+                    <div>
+                      <h5 class="font-medium text-slate-700 ">5000 FCFA</h5>
+                      <p class="font-medium text-slate-500 text-sm">Mois dernier</p>
+                    </div>
+
+                  </div>
+                   <canvas id="myChart" style="height: 100%;"  ></canvas>
+                 </div>
+                 <div class="col-span-12 sm:col-span-12 md:col-span-6 bg-gray-50 p-4 rounded-[25px] shadow-lg  xl:mx-4 mt-4 flex justify-center ">
+                  <!-- <div class="p-2 flex">
+                    <div class="me-6">
+                      <h5 class="font-medium text-slate-700">5000 FCFA</h5>
+                      <p class="font-medium text-slate-500 text-sm">Ce mois</p>
+                    </div>
+                    <div>
+                      <h5 class="font-medium text-slate-700 ">5000 FCFA</h5>
+                      <p class="font-medium text-slate-500 text-sm">Mois dernier</p>
+                    </div>
+
+                  </div> -->
+                  <div></div>
+                   <canvas id="myChart2"  sttyle="height: 100%;"  ></canvas>
+                 </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- right part  -->
+            <div class=" col-span-12 2xl:col-span-4 h-full w-full p-6  border " >
+               <div class="">
+                  <h5 class="font-medium text-slate-900 xlmx-4" >Transactions</h5>
+                  <!-- Transactions content  -->
+                  <div class="mt-5">
+
+                    <div class="flex border p-2 rounded-lg  shadow-md  bg-gray-50">
+                      <div class=" border h-[50px] w-[50px] rounded-full border-slate-800">
+                        <img src="" alt="" />
+                      </div>
+                      <div class="mx-4">
+                        <h4 class="text-lg text-slate-700">Eric</h4>
+                        <h5 class="text-sm text-slate-500">20 March 2022</h5>
+                      </div>
+                    </div>
+
+
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          <!-- employe content  -->
+
+          <div class="isContentHidden" data-li-content="employe">
+            <h5 class="text-xl font-medium mb-6">Gestions des employés</h5>
+            <!-- header -->
+             <div class="flex items-center justify-between">
+              
+              <a class="bg-slate-900 p-4 rounded-[15px] text-slate-100 text-sm" href="">Ajouter un employé</a> 
+              <div class="border bg-white p-2 flex iems-center rounded-[15px]">
+                <input type="text" class="outline-none " placeholder="Rechercher un employé" />
+                <i class="fi fi-bs-search"></i>
+              </div>
+             </div>
+              <!-- content  -->
+               <div class="grid grid-cols-4 gap-4 border my-9">
+                <!-- Affichage des employés  -->
+                <figure class="md:flex rounded-[15px] bg-gray-50 p-5 col-span-1 m-2 shadow-md " >
+                  <img src="" alt="" class="size-32 mx-auto rounded-[10px]">
+                  <div class=" flex items-center justify-between">
+                    <figcaption class="font-medium ">
+                      <div class="text-slate-800 dark:text-sky-400">
+                        Sarah Dayan
+                      </div>
+                     
+                      <div class="flex items-center my-5">
+                        <a href="" class="text-sky-500 dark:text-sky-400 hover:underline">
+                          <button class="bg-slate-900 p-2 w-24 rounded-[15px] text-slate-100 text-sm">
+                            profil
+                          </button>
+                        </a>
+                      </div>
+                    </figcaption>
+                  </div>
+                </figure>
+
+                <figure class="md:flex rounded-[15px] bg-gray-50 p-5 col-span-1 m-2 shadow-md " >
+                  <img src="" alt="" class="size-32 mx-auto rounded-[10px]">
+                  <div class=" flex items-center justify-between">
+                    <figcaption class="font-medium ">
+                      <div class="text-slate-800 dark:text-sky-400">
+                        Sarah Dayan
+                      </div>
+                     
+                      <div class="flex items-center my-5">
+                        <a href="" class="text-sky-500 dark:text-sky-400 hover:underline">
+                          <button class="bg-slate-900 p-2 w-24 rounded-[15px] text-slate-100 text-sm">
+                            profil
+                          </button>
+                        </a>
+                      </div>
+                    </figcaption>
+                  </div>
+                </figure>
+
+                <figure class="md:flex rounded-[15px] bg-gray-50 p-5 col-span-1 m-2 shadow-md " >
+                  <img src="" alt="" class="size-32 mx-auto rounded-[10px]">
+                  <div class=" flex items-center justify-between">
+                    <figcaption class="font-medium ">
+                      <div class="text-slate-800 dark:text-sky-400">
+                        Sarah Dayan
+                      </div>
+                     
+                      <div class="flex items-center my-5">
+                        <a href="" class="text-sky-500 dark:text-sky-400 hover:underline">
+                          <button class="bg-slate-900 p-2 w-24 rounded-[15px] text-slate-100 text-sm">
+                            profil
+                          </button>
+                        </a>
+                      </div>
+                    </figcaption>
+                  </div>
+                </figure>
+            
+               </div>
+          </div>
+           
+        </div>
+
+    </main>
+  </body>
+  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/chartData.js"></script>
+
+</html>
