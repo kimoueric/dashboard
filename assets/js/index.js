@@ -154,7 +154,7 @@ let manage = {
         sideBar.classList.add("animate__bounceInLeft");
         sideBar.classList.remove("isNotAbsolute");
         sideBar.classList.add("isAbsolute");
-        document.getElementById("burger").classList.remove("fi-rs-burger-menu");
+        document.getElementById("burger").classList.remove("fi-rs-bars-staggered");
         document.body.classList.add("overflow-hidden");
         break;
       case "closeSideBar":
@@ -165,7 +165,7 @@ let manage = {
           sideBar.classList.add("isHidden");
        
         
-        document.getElementById("burger").classList.add("fi-rs-burger-menu");
+        document.getElementById("burger").classList.add("fi-rs-bars-staggered");
         document.body.classList.remove("overflow-hidden");
         break;
       default:
