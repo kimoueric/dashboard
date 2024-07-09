@@ -1,90 +1,28 @@
-// const btnupdown = document.getElementById("btnupdown-2");
-// const employeOpe = document.getElementById("employeOpe");
-// const garantieOpe = document.getElementById("garantieOpe");
-// const reparationOpe = document.getElementById("reparationOpe");
-// const venteOpe = document.getElementById("venteOpe");
-// const stockOpe = document.getElementById("stockOpe");
-
-// const operationTable = [
-//   employeOpe,
-//   garantieOpe,
-//   reparationOpe,
-//   venteOpe,
-//   stockOpe,
-// ];
-
-// operationTable.forEach((operation) => {
-//   operation.addEventListener("click", function () {
-//     console.log(operation.getAttribute("id"));
-//     const activeElement = document.getElementsByClassName("activeItem");
-//     activeElement[0].classList.remove("activeItem");
-//     document.getElementById(
-//       "title"
-//     ).innerHTML = ` <p class="flex items-center">
-//             <span>Gestions</span>
-//             <i class="fi fi-sr-angle-small-right pt-[5px]"></i>
-//             <span id="title" class="text-slate-500">${this.innerText}</span>
-//           </p>
-//            `;
-//     document.getElementById("item2").classList.add("activeItem");
-//   });
-// });
-
-// document.getElementById("item1").addEventListener("click", function () {
-//   const activeElement = document.getElementsByClassName("activeItem");
-//   activeElement[0].classList.remove("activeItem");
-//   document.getElementById("title").innerHTML = `Dashboard `;
-//   this.classList.add("activeItem");
-// });
-// btnupdown.getElementsByTagName("i")[0].addEventListener("click", function () {
-//   const operationContainer = document.getElementById("operation-container-2");
-//   if (operationContainer.className.toString().includes("opacity-0")) {
-//     operationContainer.style.transition = "all 0.5s ease";
-//     operationContainer.style.height = "200px";
-//     operationContainer.classList.remove("opacity-0");
-//     operationTable.forEach((operation) => {
-//       operation.classList.add("animate__animated");
-//       operation.classList.add("animate__slideInRight");
-//     });
-//     operationContainer.classList.add("opacity-1");
-//     this.classList.remove("fi-sr-angle-small-down");
-//     this.classList.add("fi-sr-angle-small-up");
-//   } else {
-//     operationContainer.classList.remove("opacity-1");
-//     operationContainer.classList.add("opacity-0");
-//     operationTable.forEach((operation) => {
-//       operation.classList.remove("animate__animated");
-//       operation.classList.remove("animate__slideInRight");
-//     });
-//     this.classList.remove("fi-sr-angle-small-up");
-//     this.classList.add("fi-sr-angle-small-down");
-//   }
-// });
-
 let manage = {
   btnUpdownTable: document.querySelectorAll(".btnupdown"),
   init: function () {
     this.btnUpdownTable.forEach((btnUpDown) => {
+      console.log(btnUpDown)
       btnUpDown.addEventListener("click", () => this.upDown(btnUpDown));
     });
     document.querySelectorAll("[data-li='none']").forEach((li) => {
       li.addEventListener("click", () => {
         this.activeLiItem(li.getAttribute("id"))
         this.activeLiContent(li.getAttribute("id"))
+        this.sideBarMenu("closeSideBar");
     });
     });
     document.getElementById("burger").addEventListener("click", (e) => {
-      this.burgerMenu(e.target);
+      this.sideBarMenu(e.target.getAttribute("id"));
     });
 
     document.getElementById("closeSideBar").addEventListener("click", (e) => {
-      this.burgerMenu(e.target);
+      this.sideBarMenu("closeSideBar");
     });
   },
   upDown: function (btnUpDown) {
     let isDown = null;
-    let upDownIcon = btnUpDown.getElementsByTagName("i")[0];
-
+    let upDownIcon = btnUpDown.getElementsByTagName("i")[1];
     if (upDownIcon.className.includes("fi-sr-angle-small-down")) isDown = true;
 
     if (isDown) {
@@ -98,6 +36,7 @@ let manage = {
     }
   },
   displayLiItem: function (idItem) {
+    
     let liItem = document.querySelector(`[data-li-operation="${idItem}"]`);
     let liItemDiv = [...liItem.getElementsByTagName("div")];
     liItem.classList.remove("isHidden");
@@ -109,6 +48,7 @@ let manage = {
       item.addEventListener("click",()=>{
         this.activeLiItem(idItem);
         this.activeLiContent(item.getAttribute("id"));
+        this.sideBarMenu("closeSideBar");
       })
     })
 
@@ -142,10 +82,11 @@ let manage = {
       
     }
   } ,
-  burgerMenu: function (elem) {
-    let btn = elem.getAttribute("id") ;
+  sideBarMenu: function (actionName) {
+    // let btn = elem.getAttribute("id") ;
+
     let sideBar = document.getElementById("sideBar");
-    switch (btn) {
+    switch (actionName) {
       case "burger":
         sideBar.classList.remove("animate__animated");
         sideBar.classList.remove("animate__bounceOutLeft");
