@@ -2,7 +2,6 @@ let manage = {
   btnUpdownTable: document.querySelectorAll(".btnupdown"),
   init: function () {
     this.btnUpdownTable.forEach((btnUpDown) => {
-      console.log(btnUpDown)
       btnUpDown.addEventListener("click", () => this.upDown(btnUpDown));
     });
     document.querySelectorAll("[data-li='none']").forEach((li) => {
