@@ -13,10 +13,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-thin-rounded/css/uicons-thin-rounded.css'>
     <link
       rel="stylesheet"
       href="https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css"
     />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <link
       rel="stylesheet"
       href="https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-rounded/css/uicons-bold-rounded.css"
@@ -72,7 +74,10 @@
           transform: translateY(100%);
           bottom: 1px;
         }
-
+        .color-transparent{
+          background-color: #f97416aa;
+          color: #f1f5f9;
+        }
         .isVisible {
           display: block;
         }
@@ -214,22 +219,67 @@
         >
           <!-- header  -->
           <div
-            class="h-6 flex items-center justify-end md:justify-between mb-[26px] col-span-12"
+            class="h-6 flex items-center justify-end  mb-[26px] col-span-12"
           >
-            <p class="flex items-center isHidden md:block">
+            <!-- <p class="flex items-center isHidden md:block">
               <span>Application</span>
               <i class="fi fi-sr-angle-small-right pt-[5px]"></i>
               <span id="title" class="text-slate-500">dashboard</span>
-            </p>
+            </p> -->
             <div
-              class="size-12 border flex items-center justify-center rounded-full border-sky-950 cursor-pointer"
+              class="size-12 border  flex items-center justify-center rounded-full border-sky-950 cursor-pointer "
+              id="user-avatar"
             >
-              <!-- <i class="fi fi-sr-circle-user w-" ></i> -->
+              <img src="./assets/images/fond.jpg" alt="avatar" class="w-12 h-12 rounded-full" />
+              <div class="absolute isHidden top-[10rem] right-[12px] md:top-[6rem]   md:right-[3rem] z-40 w-[300px] h-72 p-2 w-12 rounded-md bg-sky-900 text-white flex flex-col justify-between" id="user-menu">
+                <div>
+                  <h5 class="font-bold text-lg">Nom du l'utilisateur</h5>
+                  <h6 class="font-medium text-gray-300">Role</h6> 
+                </div>
+                <div>
+                  <ul>
+                    <li class="my-3">
+                      <a href="#" class="flex items-center hover:text-sky-300">
+                        <i class="fi fi-rr-user text-gray-300"></i>
+                        <h6 class="font-medium ms-3">Profil</h6>
+                      </a>
+                    </li>
+                    <li class="my-3">
+                      <a href="#" class="flex items-center hover:text-sky-300">
+                        <i class="fi fi-rr-edit text-gray-300"></i>
+                        <h6 class="font-medium ms-3">Ajouter un compte</h6>
+                      </a>
+                    </li>
+                    <li class="my-3">
+                      <a href="#" class="flex items-center hover:text-sky-300">
+                        <i class="fi fi-rr-lock text-gray-300"></i>
+                        <h6 class="font-medium ms-3">Reinitialiser mon mot de passe</h6>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="flex items-center hover:text-sky-300">
+                        <i class="fi fi-rs-interrogation text-gray-300"></i>
+                        <h6 class="font-medium ms-3">Aide</h6>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul>
+                    <li>
+                      <a href="#" class="flex items-center hover:text-sky-300">
+                        <i class="fi fi-rr-toggle-on flex items-center text-gray-300"></i>
+                        <h6 class="font-medium ms-3">Logout</h6>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
           <!--content  -->
-          <div class="main-content position-absolute h-full col-span-12">
+          <div class="main-content  h-full col-span-12">
             <!-- dashboard content  -->
             <div
               class="grid grid-cols-12 gap-6 isContentVisible"
@@ -379,16 +429,15 @@
             <div class="isContentHidden" data-li-content="employe">
               <h5 class="text-xl font-medium mb-6">Gestion des employés</h5>
               <!-- header -->
-              <div class="flex items-center justify-between">
+              <div class="md:flex items-center justify-between">
                 <a
-                  class="bg-sky-900 p-3 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm"
+                  class="bg-sky-900 p-3 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm my-4"
                   href=""
-                  ><span class="isHidden md:inline">Ajouter un employé</span
-                  ><span class="md:isHidden"
-                    ><i class="fi fi-rs-plus-small"></i></span
+                  ><span class="">Ajouter un employé</span
+                  
                 ></a>
                 <div
-                  class="border bg-white p-2 flex iems-center rounded-[15px]"
+                  class="border bg-white p-2 flex iems-center rounded-[15px] mt-4"
                 >
                   <input
                     type="text"
@@ -399,16 +448,19 @@
                 </div>
               </div>
               <!-- content  -->
-              <div class="grid grid-cols-12 gap-4 border my-9">
+              <div class="grid grid-cols-12 gap-4  my-9">
                 <!-- Affichage des employés  -->
                 <figure
-                  class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-4 bg-gray-50 p-5 col-span-1 m-2 shadow-md"
+                  class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-3 bg-gray-50 p-5 col-span-1 m-2 shadow-md justify-between"
                 >
-                  <img src="" alt="" class="size-32 mx-auto rounded-[10px]" />
+                <div>
+
+                  <img src="" alt="" class="size-32 mx-auto rounded-[10px] border" />
+                </div>
                   <div class="flex items-center justify-between">
                     <figcaption class="font-medium">
                       <div class="text-sky-950 dark:text-sky-400">
-                        Sarah Dayan
+                        Kimou N'cho
                       </div>
 
                       <div class="flex items-center my-5">
@@ -427,57 +479,7 @@
                   </div>
                 </figure>
 
-                <figure
-                  class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-4 bg-gray-50 p-5 col-span-1 m-2 shadow-md"
-                >
-                  <img src="" alt="" class="size-32 mx-auto rounded-[10px]" />
-                  <div class="flex items-center justify-between">
-                    <figcaption class="font-medium">
-                      <div class="text-sky-950 dark:text-sky-400">
-                        Sarah Dayan
-                      </div>
-
-                      <div class="flex items-center my-5">
-                        <a
-                          href=""
-                          class="text-sky-500 dark:text-sky-400 hover:underline"
-                        >
-                          <button
-                            class="bg-sky-900 p-2 w-24 rounded-[15px] text-slate-100 text-sm"
-                          >
-                            profil
-                          </button>
-                        </a>
-                      </div>
-                    </figcaption>
-                  </div>
-                </figure>
-
-                <figure
-                  class="flex rounded-[15px] bg-gray-50 p-5 col-span-12 md:col-span-6 xl:col-span-4 m-2 shadow-md"
-                >
-                  <img src="" alt="" class="size-32 mx-auto rounded-[10px]" />
-                  <div class="flex items-center justify-between">
-                    <figcaption class="font-medium">
-                      <div class="text-sky-950 dark:text-sky-400">
-                        Sarah Dayan
-                      </div>
-
-                      <div class="flex items-center my-5">
-                        <a
-                          href=""
-                          class="text-sky-500 dark:text-sky-400 hover:underline"
-                        >
-                          <button
-                            class="bg-sky-900 p-2 w-24 rounded-[15px] text-slate-100 text-sm"
-                          >
-                            profil
-                          </button>
-                        </a>
-                      </div>
-                    </figcaption>
-                  </div>
-                </figure>
+              
               </div>
             </div>
 
@@ -485,13 +487,12 @@
             <div class="isContentHidden" data-li-content="garantie">
               <h5 class="text-xl font-medium mb-6">Gestion des garanties</h5>
               <!-- header -->
-              <div class="flex items-center justify-between ">
+              <div class="md:flex items-center justify-between">
                 <a
-                  class="bg-sky-900 p-3 md:p-4 rounded-lg md:w-[250px] md:rounded-2xl text-slate-100 text-sm md:text-[18px] text-center"
+                  class="bg-sky-900 p-4 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm my-4"
                   href=""
-                  ><span class="isHidden md:inline">Ajouter une garantie</span
-                  ><span class="md:isHidden"
-                    ><i class="fi fi-rs-plus-small"></i></span
+                  ><span class="">Ajouter une garantie</span
+                  
                 ></a>
               </div>
               <!-- content  -->
@@ -519,7 +520,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -527,7 +528,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -536,7 +537,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -556,7 +557,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -564,7 +565,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -573,7 +574,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -593,7 +594,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -601,7 +602,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -610,7 +611,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -626,14 +627,14 @@
             <div class="isContentHidden" data-li-content="reparation">
               <h5 class="text-xl font-medium mb-6">Gestion des reparations</h5>
               <!-- header -->
-              <div class="flex items-center justify-between ">
+              <div class="md:flex items-center justify-between">
                 <a
-                  class="bg-sky-900 p-3 md:p-4 rounded-lg md:w-[250px] md:rounded-2xl text-slate-100 text-sm md:text-[18px] text-center"
+                  class="bg-sky-900 p-4 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm my-4"
                   href=""
-                  ><span class="isHidden md:inline">Ajouter une reparation</span
-                  ><span class="md:isHidden"
-                    ><i class="fi fi-rs-plus-small"></i></span
+                  ><span class="">Ajouter une reparation</span
+                  
                 ></a>
+              
               </div>
               <!-- content  -->
               <div class="overflow-auto">
@@ -660,7 +661,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -668,7 +669,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -677,7 +678,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -697,7 +698,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -705,7 +706,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -714,7 +715,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -734,7 +735,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -742,7 +743,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -751,7 +752,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -767,14 +768,14 @@
             <div class="isContentHidden" data-li-content="vente">
               <h5 class="text-xl font-medium mb-6">Gestion des ventes</h5>
               <!-- header -->
-              <div class="flex items-center justify-between ">
+              <div class="md:flex items-center justify-between">
                 <a
-                  class="bg-sky-900 p-3 md:p-4 rounded-lg md:w-[250px] md:rounded-2xl text-slate-100 text-sm md:text-[18px] text-center"
+                  class="bg-sky-900 p-4 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm my-4"
                   href=""
-                  ><span class="isHidden md:inline">Ajouter une vente</span
-                  ><span class="md:isHidden"
-                    ><i class="fi fi-rs-plus-small"></i></span
+                  ><span class="">Ajouter une vente</span
+                  
                 ></a>
+               
               </div>
               <!-- content  -->
               <div class="overflow-auto">
@@ -806,7 +807,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -814,7 +815,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -823,7 +824,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -852,7 +853,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -861,7 +862,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -881,7 +882,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -889,7 +890,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -898,7 +899,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -912,14 +913,14 @@
             <div class="isContentHidden" data-li-content="categorie">
               <h5 class="text-xl font-medium mb-6">Gestion des categories</h5>
               <!-- header -->
-              <div class="flex items-center justify-between ">
+              <div class="md:flex items-center justify-between">
                 <a
-                  class="bg-sky-900 p-3 md:p-4 rounded-lg md:w-[250px] md:rounded-2xl text-slate-100 text-sm md:text-[18px] text-center"
+                  class="bg-sky-900 p-4 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm my-4"
                   href=""
-                  ><span class="isHidden md:inline">Ajouter une categorie</span
-                  ><span class="md:isHidden"
-                    ><i class="fi fi-rs-plus-small"></i></span
+                  ><span class="">Ajouter une categorie</span
+                  
                 ></a>
+               
               </div>
               <!-- content  -->
               <div class="overflow-auto">
@@ -949,7 +950,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -957,7 +958,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -966,7 +967,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -995,7 +996,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -1004,7 +1005,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -1023,7 +1024,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -1031,7 +1032,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -1040,7 +1041,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -1054,13 +1055,12 @@
             <div class="isContentHidden" data-li-content="produit">
               <h5 class="text-xl font-medium mb-6">Gestion des produits</h5>
               <!-- header -->
-              <div class="flex items-center justify-between ">
+              <div class="md:flex items-center justify-between">
                 <a
-                  class="bg-sky-900 p-3 md:p-4 rounded-lg md:w-[250px] md:rounded-2xl text-slate-100 text-sm md:text-[18px] text-center"
+                  class="bg-sky-900 p-4 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm my-4"
                   href=""
-                  ><span class="isHidden md:inline">Ajouter un produit</span
-                  ><span class="md:isHidden"
-                    ><i class="fi fi-rs-plus-small"></i></span
+                  ><span class="">Ajouter un produit</span
+                  
                 ></a>
               </div>
               <!-- content  -->
@@ -1093,7 +1093,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -1101,7 +1101,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -1110,7 +1110,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -1139,7 +1139,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -1148,7 +1148,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -1168,7 +1168,7 @@
                       <td>
                         <div class="flex items-center justify-center">
                           <span><i class="fi fi-rr-checkbox me-3 text-red-500"></i></span
-                          ><span class="text-red-500">Inactive</span>
+                          ><span class="text-red-500">Inactif</span>
                         </div>
                       </td>
                       <td>
@@ -1176,7 +1176,7 @@
                           <div class="flex items-center justify-center me-5">
                             <a href="#">
                               <span><i class="fi fi-rr-checkbox me-2"></i></span
-                              ><span>Edit</span>
+                              ><span>Editer</span>
                             </a>
                           </div>
                           <div class="flex items-center justify-center">
@@ -1185,7 +1185,7 @@
                                 ><i
                                   class="fi fi-rr-trash me-2 text-red-500"
                                 ></i></span
-                              ><span class="text-red-500">Delete</span>
+                              ><span class="text-red-500">Supprimer</span>
                             </a>
                           </div>
                         </div>
@@ -1193,6 +1193,312 @@
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+
+            <!-- stock content  -->
+            <div class="isContentHidden" data-li-content="stock">
+              <h5 class="text-xl font-medium mb-6">Gestion des stocks</h5>
+              <!-- header -->
+              <div class="md:flex items-center justify-between">
+                <a
+                  class="bg-sky-900 p-3 md:p-4 rounded-lg md:rounded-[15px] text-slate-100 text-sm my-4"
+                  href=""
+                  ><span class="">Ajouter un stock</span
+                  
+                ></a>
+                <div
+                  class="border bg-white p-2 flex iems-center rounded-[15px] mt-4"
+                >
+                  <input
+                    type="text"
+                    class="outline-none"
+                    placeholder="Rechercher un employé"
+                  />
+                  <i class="fi fi-bs-search"></i>
+                </div>
+              </div>
+              <!-- content  -->
+              <div class="grid grid-cols-12 gap-4  my-9">
+                <!-- Affichage des stocks  -->
+                <figure
+                  class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-3 bg-gray-50 p-5 col-span-1 m-2 shadow-md flex-col justify-between "
+                >
+                <div class="relative  h-72 w-full border rounded-lg shadow-md " style="background:linear-gradient(to top, #000000, #00000027 5%),url(./assets/images/fond.jpg) no-repeat center center;">
+                  <div class="absolute top-2 left-2 text-center p-2 w-32 rounded-md color-transparent text-md">
+                    Featured
+                  </div>
+                  <div class="absolute bottom-2 left-2 ">
+                      <h6 class="text-md text-gray-50 ">Nom du produit</h6>
+                  </div>
+                </div>
+                  <div class=" my-2">
+                    <figcaption class="font-medium">
+                      <div class="text-sky-950 dark:text-sky-400">
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-link-alt text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Prix:</h6>  <span class="text-sm mx-1 text-gray-500">600</span> <span class="text-sm text-gray-500">fcfa</span>
+                        </div>
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-layers text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Stock restant:</h6>  <span class="text-sm mx-1 text-gray-500">50</span> 
+                        </div>
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-checkbox text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Status:</h6>  <span class="text-sm mx-1 text-gray-500">Active</span> 
+                        </div>
+                      </div>
+
+                      <div class="flex items-center justify-between mt-8 py-3   w-full ">
+                        <div class="">
+
+                        <div class=" me-5  ">
+                          <a href="#">
+                            <div class="flex items-center">
+
+                              <i class="fi fi-rr-eye me-2 text-sm flex font-normal"></i>
+                              <span class="text-sm font-normal">Aperçu</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="">
+
+                   
+                        <div class="flex items-center justify-center ">
+                          <div class="flex items-center justify-center me-5">
+                            <a href="#">
+                              <div class="flex items-center">
+
+                                <i class="fi fi-rr-checkbox me-2 text-sm flex font-normal"></i>
+                                <span class="text-sm font-normal">Editer</span>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="flex items-center justify-center">
+                            <a href="#">
+                              <div class="flex items-center">
+
+                                <i
+                                class="fi fi-rr-trash me-2 text-red-500 text-sm flex font-normal"
+                                ></i>
+                                <span class="text-red-500 text-sm font-normal">Supprimer</span>  
+                              </div>
+                            </a>
+                          </div>
+                      </div>
+                    </div>
+                    </figcaption>
+                  </div>
+                </figure>
+
+                <figure
+                  class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-3 bg-gray-50 p-5 col-span-1 m-2 shadow-md flex-col justify-between "
+                >
+                <div class="relative  h-72 w-full border rounded-lg shadow-md " style="background:linear-gradient(to top, #000000, #00000027 5%),url(./assets/images/fond.jpg) no-repeat center center;">
+                  <div class="absolute top-2 left-2 text-center p-2 w-32 rounded-md color-transparent text-md">
+                    Featured
+                  </div>
+                  <div class="absolute bottom-2 left-2 ">
+                      <h6 class="text-md text-gray-50 ">Nom du produit</h6>
+                  </div>
+                </div>
+                  <div class=" my-2">
+                    <figcaption class="font-medium">
+                      <div class="text-sky-950 dark:text-sky-400">
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-link-alt text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Prix:</h6>  <span class="text-sm mx-1 text-gray-500">600</span> <span class="text-sm text-gray-500">fcfa</span>
+                        </div>
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-layers text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Stock restant:</h6>  <span class="text-sm mx-1 text-gray-500">50</span> 
+                        </div>
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-checkbox text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Status:</h6>  <span class="text-sm mx-1 text-gray-500">Active</span> 
+                        </div>
+                      </div>
+
+                      <div class="flex items-center justify-between mt-8 py-3   w-full ">
+                        <div class="">
+
+                        <div class=" me-5  ">
+                          <a href="#">
+                            <div class="flex items-center">
+
+                              <i class="fi fi-rr-eye me-2 text-sm flex font-normal"></i>
+                              <span class="text-sm font-normal">Aperçu</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="">
+
+                   
+                        <div class="flex items-center justify-center ">
+                          <div class="flex items-center justify-center me-5">
+                            <a href="#">
+                              <div class="flex items-center">
+
+                                <i class="fi fi-rr-checkbox me-2 text-sm flex font-normal"></i>
+                                <span class="text-sm font-normal">Editer</span>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="flex items-center justify-center">
+                            <a href="#">
+                              <div class="flex items-center">
+
+                                <i
+                                class="fi fi-rr-trash me-2 text-red-500 text-sm flex font-normal"
+                                ></i>
+                                <span class="text-red-500 text-sm font-normal">Supprimer</span>  
+                              </div>
+                            </a>
+                          </div>
+                      </div>
+                    </div>
+                    </figcaption>
+                  </div>
+                </figure>
+
+                <figure
+                  class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-3 bg-gray-50 p-5 col-span-1 m-2 shadow-md flex-col justify-between "
+                >
+                <div class="relative  h-72 w-full border rounded-lg shadow-md " style="background:linear-gradient(to top, #000000, #00000027 5%),url(./assets/images/fond.jpg) no-repeat center center;">
+                  <div class="absolute top-2 left-2 text-center p-2 w-32 rounded-md color-transparent text-md">
+                    Featured
+                  </div>
+                  <div class="absolute bottom-2 left-2 ">
+                      <h6 class="text-md text-gray-50 ">Nom du produit</h6>
+                  </div>
+                </div>
+                  <div class=" my-2">
+                    <figcaption class="font-medium">
+                      <div class="text-sky-950 dark:text-sky-400">
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-link-alt text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Prix:</h6>  <span class="text-sm mx-1 text-gray-500">600</span> <span class="text-sm text-gray-500">fcfa</span>
+                        </div>
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-layers text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Stock restant:</h6>  <span class="text-sm mx-1 text-gray-500">50</span> 
+                        </div>
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-checkbox text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Status:</h6>  <span class="text-sm mx-1 text-gray-500">Active</span> 
+                        </div>
+                      </div>
+
+                      <div class="flex items-center justify-between mt-8 py-3   w-full ">
+                        <div class="">
+
+                        <div class=" me-5  ">
+                          <a href="#">
+                            <div class="flex items-center">
+
+                              <i class="fi fi-rr-eye me-2 text-sm flex font-normal"></i>
+                              <span class="text-sm font-normal">Aperçu</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="">
+
+                   
+                        <div class="flex items-center justify-center ">
+                          <div class="flex items-center justify-center me-5">
+                            <a href="#">
+                              <div class="flex items-center">
+
+                                <i class="fi fi-rr-checkbox me-2 text-sm flex font-normal"></i>
+                                <span class="text-sm font-normal">Editer</span>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="flex items-center justify-center">
+                            <a href="#">
+                              <div class="flex items-center">
+
+                                <i
+                                class="fi fi-rr-trash me-2 text-red-500 text-sm flex font-normal"
+                                ></i>
+                                <span class="text-red-500 text-sm font-normal">Supprimer</span>  
+                              </div>
+                            </a>
+                          </div>
+                      </div>
+                    </div>
+                    </figcaption>
+                  </div>
+                </figure>
+
+                <figure
+                  class="flex rounded-[15px] col-span-12 md:col-span-6 xl:col-span-3 bg-gray-50 p-5 col-span-1 m-2 shadow-md flex-col justify-between "
+                >
+                <div class="relative  h-72 w-full border rounded-lg shadow-md " style="background:linear-gradient(to top, #000000, #00000027 5%),url(./assets/images/fond.jpg) no-repeat center center;">
+                  <div class="absolute top-2 left-2 text-center p-2 w-32 rounded-md color-transparent text-md">
+                    Featured
+                  </div>
+                  <div class="absolute bottom-2 left-2 ">
+                      <h6 class="text-md text-gray-50 ">Nom du produit</h6>
+                  </div>
+                </div>
+                  <div class=" my-2">
+                    <figcaption class="font-medium">
+                      <div class="text-sky-950 dark:text-sky-400">
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-link-alt text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Prix:</h6>  <span class="text-sm mx-1 text-gray-500">600</span> <span class="text-sm text-gray-500">fcfa</span>
+                        </div>
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-layers text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Stock restant:</h6>  <span class="text-sm mx-1 text-gray-500">50</span> 
+                        </div>
+                        <div class="flex items-center my-2">
+                          <i class="fi fi-rr-checkbox text-sm  flex items-center me-2 text-gray-500"></i> <h6 class="text-sm text-gray-500">Status:</h6>  <span class="text-sm mx-1 text-gray-500">Active</span> 
+                        </div>
+                      </div>
+
+                      <div class="flex items-center justify-between mt-8 py-3   w-full ">
+                        <div class="">
+
+                        <div class=" me-5  ">
+                          <a href="#">
+                            <div class="flex items-center">
+
+                              <i class="fi fi-rr-eye me-2 text-sm flex font-normal"></i>
+                              <span class="text-sm font-normal">Aperçu</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="">
+
+                   
+                        <div class="flex items-center justify-center ">
+                          <div class="flex items-center justify-center me-5">
+                            <a href="#">
+                              <div class="flex items-center">
+
+                                <i class="fi fi-rr-checkbox me-2 text-sm flex font-normal"></i>
+                                <span class="text-sm font-normal">Editer</span>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="flex items-center justify-center">
+                            <a href="#">
+                              <div class="flex items-center">
+
+                                <i
+                                class="fi fi-rr-trash me-2 text-red-500 text-sm flex font-normal"
+                                ></i>
+                                <span class="text-red-500 text-sm font-normal">Supprimer</span>  
+                              </div>
+                            </a>
+                          </div>
+                      </div>
+                    </div>
+                    </figcaption>
+                  </div>
+                </figure>
+            
+
+              
               </div>
             </div>
           </div>

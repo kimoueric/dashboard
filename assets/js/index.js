@@ -18,6 +18,10 @@ let manage = {
     document.getElementById("closeSideBar").addEventListener("click", (e) => {
       this.sideBarMenu("closeSideBar");
     });
+
+    document.getElementById("user-avatar").addEventListener("click", (e) => {
+      document.getElementById("user-menu").classList.toggle("isHidden");
+    });
   },
   upDown: function (btnUpDown) {
     let isDown = null;
