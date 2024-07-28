@@ -22,6 +22,14 @@ let manage = {
     document.getElementById("user-avatar").addEventListener("click", (e) => {
       document.getElementById("user-menu").classList.toggle("isHidden");
     });
+    document.addEventListener("click", (e) => {
+    let userAvatar = document.getElementById("user-avatar");
+      
+     if((e.target.id!="user-avatar") &&(!userAvatar.classList.contains("isHidden"))){
+      document.getElementById("user-menu").classList.add("isHidden");
+     }
+
+    });
   },
   upDown: function (btnUpDown) {
     let isDown = null;
